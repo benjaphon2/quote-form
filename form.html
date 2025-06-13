@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>ฟอร์มขอใบเสนอราคา</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .container { width: 60%; margin: 0 auto; padding-top: 20px; }
+        input, textarea { width: 100%; padding: 10px; margin-bottom: 10px; }
+        button { padding: 10px 20px; background-color: #f8a147; border: none; color: white; font-size: 16px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>ฟอร์มขอใบเสนอราคา</h2>
+    <form id="quoteForm">
+        <label for="company">ชื่อบริษัท:</label>
+        <input type="text" id="company" name="company" required><br>
+        
+        <label for="contact_name">ชื่อผู้ติดต่อ:</label>
+        <input type="text" id="contact_name" name="contact_name" required><br>
+        
+        <label for="email">อีเมล:</label>
+        <input type="email" id="email" name="email" required><br>
+        
+        <label for="phone">เบอร์โทร:</label>
+        <input type="text" id="phone" name="phone" required><br>
+        
+        <label for="product">สินค้า:</label>
+        <input type="text" id="product" name="product" required><br>
+        
+        <label for="quantity">จำนวน:</label>
+        <input type="number" id="quantity" name="quantity" required><br>
+        
+        <label for="require_date">วันที่ต้องการ:</label>
+        <input type="date" id="require_date" name="require_date" required><br>
+        
+        <label for="details">รายละเอียดเพิ่มเติม:</label><br>
+        <textarea id="details" name="details" rows="4" cols="50"></textarea><br>
+        
+        <button type="submit">ส่งข้อมูล</button>
+    </form>
+
+    <div id="confirmationMessage" style="display:none; color:green;">
+        ข้อมูลถูกส่งเรียบร้อยแล้ว!
+    </div>
+</div>
+
+<script>
+document.getElementById('quoteForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const formData = new FormData(event.target);
+    const data = Object.fromEntries(formData.entries());
+
+    // ส่งข้อมูลไปที่ Web App
+    fetch("https://script.google.com/macros/s/AKfycbz8jnxrvllLVqEyGFpgluHXlR0KRVUHA1haNOqYRyI7yEx9z0DiZD0dpX1wgMhjuOU/exec", {
+        method: 'POST',
+        body: new URLSearchParams(data)
+    })
+    .then(response => response.json())
+    .then(result => {
+        if (result.status === 'success') {
+            document.getElementById('confirmationMessage').style.display = 'block';
+        } else {
+            alert("เกิดข้อผิดพลาดในการส่งข้อมูล");
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert("เกิดข้อผิดพลาดในการส่งข้อมูล");
+    });
+});
+</script>
+
+</body>
+</html>
