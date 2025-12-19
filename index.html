@@ -1,170 +1,82 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ฟอร์มสั่งซื้อสินค้า | ศิลาบรรจุภัณฑ์</title>
-  <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600&display=swap" rel="stylesheet">
-  <style>
-    body {
-      font-family: 'Sarabun', sans-serif;
-      background: #fff3e0;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      justify-content: center;
-    }
-
-    .container {
-      background: white;
-      margin: 30px 16px;
-      border-radius: 12px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-      width: 100%;
-      max-width: 500px;
-      overflow: hidden;
-    }
-
-    .banner {
-      width: 100%;
-      display: block;
-    }
-
-    .form-section {
-      padding: 20px 24px;
-    }
-
-    h2 {
-      text-align: center;
-      color: #e65100;
-      margin-bottom: 20px;
-      font-size: 24px;
-    }
-
-    label {
-      font-size: 16px;
-      margin-bottom: 6px;
-      display: block;
-      color: #444;
-    }
-
-    input, textarea, button {
-      width: 100%;
-      font-size: 16px;
-      padding: 10px;
-      margin-bottom: 16px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      box-sizing: border-box;
-    }
-
-    button {
-      background-color: #ef6c00;
-      color: white;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-
-    button:hover {
-      background-color: #e65100;
-    }
-
-    .success-message {
-      color: green;
-      font-size: 16px;
-      text-align: center;
-      margin-top: 16px;
-    }
-
-    .contact {
-      text-align: center;
-      padding: 0 20px 20px;
-    }
-
-    .contact a {
-      display: block;
-      margin: 6px 0;
-      text-decoration: none;
-      color: #ef6c00;
-      font-weight: bold;
-    }
-
-    .map-container {
-      width: 100%;
-      height: 300px;
-      border: none;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <title>ฟอร์มขอใบเสนอราคา</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .container { width: 60%; margin: 0 auto; padding-top: 20px; }
+        input, textarea { width: 100%; padding: 10px; margin-bottom: 10px; }
+        button { padding: 10px 20px; background-color: #f8a147; border: none; color: white; font-size: 16px; }
+    </style>
 </head>
 <body>
-  <div class="container">
-    <img src="ห้างหุ้นส่วนจำกัด ศิลาบรรจุภัณฑ์ (1).png" alt="ศิลาบรรจุภัณฑ์" class="banner">
 
-    <div class="form-section">
-      <h2>ฟอร์มสั่งซื้อสินค้า</h2>
-      <form id="orderForm">
-        <label>ชื่อบริษัท</label>
-        <input type="text" name="company" required>
+<div class="container">
+    <h2>ฟอร์มขอใบเสนอราคา</h2>
+    <form id="quoteForm">
 
-        <label>ชื่อผู้ติดต่อ</label>
-        <input type="text" name="contact_name" required>
+        <label for="company">ชื่อบริษัท:</label>
+        <input type="text" id="company" name="company" required><br>
 
-        <label>อีเมล</label>
-        <input type="email" name="email" required>
+        <!-- ✅ เพิ่มช่องที่อยู่ -->
+        <label for="address">ที่อยู่:</label>
+        <textarea id="address" name="address" rows="3" required></textarea><br>
 
-        <label>เบอร์โทร</label>
-        <input type="text" name="phone">
-
-        <label>ชื่อสินค้า</label>
-        <input type="text" name="product">
-
-        <label>จำนวน</label>
-        <input type="number" name="quantity">
-
-        <label>วันที่ต้องการสินค้า</label>
-        <input type="date" name="require_date">
-
-        <label>รายละเอียดเพิ่มเติม</label>
-        <textarea name="details" rows="4"></textarea>
-
+        <label for="contact_name">ชื่อผู้ติดต่อ:</label>
+        <input type="text" id="contact_name" name="contact_name" required><br>
+        
+        <label for="email">อีเมล:</label>
+        <input type="email" id="email" name="email" required><br>
+        
+        <label for="phone">เบอร์โทร:</label>
+        <input type="text" id="phone" name="phone" required><br>
+        
+        <label for="product">สินค้า:</label>
+        <input type="text" id="product" name="product" required><br>
+        
+        <label for="quantity">จำนวน:</label>
+        <input type="number" id="quantity" name="quantity" required><br>
+        
+        <label for="require_date">วันที่ต้องการ:</label>
+        <input type="date" id="require_date" name="require_date" required><br>
+        
+        <label for="details">รายละเอียดเพิ่มเติม:</label><br>
+        <textarea id="details" name="details" rows="4" cols="50"></textarea><br>
+        
         <button type="submit">ส่งข้อมูล</button>
-      </form>
-      <div id="message" class="success-message"></div>
+    </form>
+    <div id="confirmationMessage" style="display:none; color:green;">
+        ข้อมูลถูกส่งเรียบร้อยแล้ว!
     </div>
+</div>
 
-    <div class="contact">
-      <p>📞 โทร: <a href="tel:0909636282">090-963-6282</a></p>
-      <p>💬 ไลน์: <a href="https://line.me/ti/p/~silapack" target="_blank">https://line.me/ti/p/~silapack</a></p>
-    </div>
+<script>
+document.getElementById('quoteForm').addEventListener('submit', function(event) {
+    event.preventDefault();
 
-    
-  </div>
+    const formData = new FormData(event.target);
+    const data = Object.fromEntries(formData.entries());
 
-  <script>
-    document.getElementById("orderForm").addEventListener("submit", function(event) {
-      event.preventDefault();
-      const form = event.target;
-      const formData = new FormData(form);
-      const url = "https://script.google.com/macros/s/AKfycbz8jnxrvllLVqEyGFpgluHXlR0KRVUHA1haNOqYRyI7yEx9z0DiZD0dpX1wgMhjuOU/exec";
-
-      fetch(url, {
-        method: "POST",
-        body: formData
-      })
-      .then(response => response.json())
-      .then(data => {
-        if (data.status === "success") {
-          document.getElementById("message").textContent = "✅ ส่งข้อมูลเรียบร้อยแล้ว ขอบคุณค่ะ!";
-          form.reset();
+    // ส่งข้อมูลไปที่ Web App
+    fetch("https://script.google.com/macros/s/AKfycbz8jnxrvllLVqEyGFpgluHXlR0KRVUHA1haNOqYRyI7yEx9z0DiZD0dpX1wgMhjuOU/exec", {
+        method: 'POST',
+        body: new URLSearchParams(data)
+    })
+    .then(response => response.json())
+    .then(result => {
+        if (result.status === 'success') {
+            document.getElementById('confirmationMessage').style.display = 'block';
         } else {
-          document.getElementById("message").textContent = "❌ ส่งข้อมูลไม่สำเร็จ: " + (data.message || "ไม่ทราบสาเหตุ");
+            alert("เกิดข้อผิดพลาดในการส่งข้อมูล");
         }
-      })
-      .catch(error => {
-        document.getElementById("message").textContent = "❌ เกิดข้อผิดพลาด: " + error;
-      });
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert("เกิดข้อผิดพลาดในการส่งข้อมูล");
     });
-  </script>
+});
+</script>
+
 </body>
 </html>
