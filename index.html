@@ -101,46 +101,37 @@
   <div class="container">
     <img src="ห้างหุ้นส่วนจำกัด ศิลาบรรจุภัณฑ์ (1).png" alt="ศิลาบรรจุภัณฑ์" class="banner">
 
-    <div class="form-section">
-      <h2>ฟอร์มสั่งซื้อสินค้า</h2>
-      <form id="orderForm">
-        <label>ชื่อบริษัท</label>
-        <input type="text" name="company" required>
-        
-  <label>ที่อยู่บริษัท</label>
-        <input type="text" name="address" required>
-        
-        <label>ชื่อผู้ติดต่อ</label>
-        <input type="text" name="contact_name" required>
+ <form id="orderForm">
+  <label>ชื่อบริษัท</label>
+  <input type="text" name="company" required>
 
-        <label>อีเมล</label>
-        <input type="email" name="email" required>
+  <!-- ✅ เพิ่มช่องที่อยู่ -->
+  <label>ที่อยู่</label>
+  <textarea name="address" rows="3" required></textarea>
 
-        <label>เบอร์โทร</label>
-        <input type="text" name="phone">
+  <label>ชื่อผู้ติดต่อ</label>
+  <input type="text" name="contact_name" required>
 
-        <label>ชื่อสินค้า</label>
-        <input type="text" name="product">
+  <label>อีเมล</label>
+  <input type="email" name="email" required>
 
-        <label>จำนวน</label>
-        <input type="number" name="quantity">
+  <label>เบอร์โทร</label>
+  <input type="text" name="phone">
 
-        <label>วันที่ต้องการสินค้า</label>
-        <input type="date" name="require_date">
+  <label>ชื่อสินค้า</label>
+  <input type="text" name="product">
 
-        <label>รายละเอียดเพิ่มเติม</label>
-        <textarea name="details" rows="4"></textarea>
+  <label>จำนวน</label>
+  <input type="number" name="quantity">
 
-        <button type="submit">ส่งข้อมูล</button>
-      </form>
-      <div id="message" class="success-message"></div>
-    </div>
+  <label>วันที่ต้องการสินค้า</label>
+  <input type="date" name="require_date">
 
-    <div class="contact">
-      <p>📞 โทร: <a href="tel:0909636282">090-963-6282</a></p>
-      <p>💬 ไลน์: <a href="https://line.me/ti/p/~silapack" target="_blank">https://line.me/ti/p/~silapack</a></p>
-    </div>
+  <label>รายละเอียดเพิ่มเติม</label>
+  <textarea name="details" rows="4"></textarea>
 
+  <button type="submit">ส่งข้อมูล</button>
+</form>
     
   </div>
 
